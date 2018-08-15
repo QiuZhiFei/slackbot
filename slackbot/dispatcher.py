@@ -239,6 +239,16 @@ class Message(object):
         self.send(text)
 
     @unicode_compact
+    def send_channel(self, channel, text):
+        """
+            Send a reply using RTM API
+
+            (This function doesn't supports formatted message
+            when using a bot integration)
+        """
+        self._client.rtm_send_message(channel, text)
+
+    @unicode_compact
     def send(self, text):
         """
             Send a reply using RTM API
