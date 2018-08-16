@@ -293,6 +293,16 @@ class Message(object):
         """
         self._client.rtm_send_message(self._body['channel'], text, thread_ts=thread_ts)
 
+    @unicode_compact
+    def send_channel(self, text, channel, thread_ts=None):
+        """
+            Send a reply using RTM API
+
+            (This function doesn't supports formatted message
+            when using a bot integration)
+        """
+        self._client.rtm_send_message(channel, text, thread_ts=thread_ts)
+
     def react(self, emojiname):
         """
            React to a message using the web api
